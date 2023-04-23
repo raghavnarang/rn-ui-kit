@@ -1,0 +1,21 @@
+{/* Icons.mdx */}
+
+import { Meta, IconGallery, IconItem } from "@storybook/blocks";
+
+import * as Icons from "./index";
+
+<Meta title="Icons" />
+
+# Icons
+<br/>
+
+<IconGallery>
+  {Object.keys(Icons).map((IconKey) => {
+    const Icon = Icons[IconKey];
+    return (
+      <IconItem name={IconKey.split('Icon')[0]}>
+        <Icon />
+      </IconItem>
+    );
+  })}
+</IconGallery>
