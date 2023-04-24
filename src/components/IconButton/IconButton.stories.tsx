@@ -12,5 +12,5 @@ export default meta;
 type Story = StoryObj<typeof IconButton>;
 
 export const Default: Story = {
-  args: { children: PhoneIcon },
+  args: { icon: PhoneIcon },
 };

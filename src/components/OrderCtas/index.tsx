@@ -31,3 +31,4 @@ const OrderCTAs: FC<OrderCTAsProps> = ({ onWhatsAppClick, onCallClick }) => (
 );
 
 export { OrderCTAs };
+export type { OrderCTAsProps };

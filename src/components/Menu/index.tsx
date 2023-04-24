@@ -9,6 +9,7 @@ export type MenuProps = {
 
 export type MenuItemProps = {
   text: string;
+  onClick?: () => void;
   subMenu?: MenuProps;
   subSection?: ReactNode;
 };
@@ -26,7 +27,9 @@ const Menu: FC<MenuProps> = ({ items }) => (
             { "border-l": i === 0 }
           )}
         >
-          <span className="mr-1 text-base font-semibold">{item.text}</span>
+          <span className="mr-1 text-base font-semibold" onClick={item.onClick}>
+            {item.text}
+          </span>
           {(item.subMenu || item.subSection) && <ChevronDownIcon />}
         </div>
         {/* TODO: Add UI support for submenu */}

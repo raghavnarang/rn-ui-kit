@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { OrderCTAs } from "../OrderCtas";
+import type { OrderCTAsProps } from "../OrderCtas";
 import type { FC } from "react";
 import { Menu } from "../Menu";
 import type { MenuProps } from "../Menu";
 import { Button, ButtonType } from "../Button";
 import { ShoppingCartIcon, UserCircleIcon } from "../Icon";
 import { ButtonToggler, TogglePosition } from "../ButtonToggler";
-import { MiniCart, MiniCartProps } from "../MiniCart";
+import { MiniCart } from "../MiniCart";
+import type { MiniCartProps } from "../MiniCart";
+import Link from "next/link";
 
 type HeaderProps = {
   logo: {
@@ -15,22 +18,33 @@ type HeaderProps = {
     width: number;
   };
   appName: string;
+  appUrl?: string;
   menu: MenuProps;
   cartProps?: MiniCartProps;
+  orderCtaProps?: OrderCTAsProps;
 };
 
-const Header: FC<HeaderProps> = ({ logo, appName, menu, cartProps }) => (
+const Header: FC<HeaderProps> = ({
+  logo,
+  appName,
+  appUrl = "#",
+  menu,
+  cartProps,
+  orderCtaProps,
+}) => (
   <div className="w-full drop-shadow-md bg-white">
     {/* Top Header */}
     <div className="border-b border-solid border-gray-100 flex justify-center">
       <div className="container h-12 flex items-center">
-        <OrderCTAs />
+        <OrderCTAs {...orderCtaProps} />
       </div>
     </div>
     {/* Main Header */}
     <div className="border-b border-solid border-gray-100 flex justify-center max-h-16">
       <div className="container flex items-center justify-between">
-        <Image alt={appName} {...logo} />
+        <Link href={appUrl}>
+          <Image alt={appName} {...logo} />
+        </Link>
         <Menu {...menu} />
         <div className="flex">
           <Button

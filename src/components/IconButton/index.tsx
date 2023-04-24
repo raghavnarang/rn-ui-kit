@@ -5,7 +5,7 @@ import { Button, ButtonProps, ButtonSize } from "../Button";
 
 export interface IconButtonProps
   extends Omit<ButtonProps, "children" | "left" | "right"> {
-  children?: Icon;
+  icon?: Icon;
 }
 
 const iconSizeStyles = {
@@ -21,13 +21,13 @@ const buttonSizeStyles = {
 };
 
 export const IconButton: FC<IconButtonProps> = ({
-  children,
+  icon,
   size = ButtonSize.lg,
   ...buttonProps
 }) => (
   <Button
     {...buttonProps}
-    left={children}
+    left={icon}
     size={size}
     iconClassName={iconSizeStyles[size]}
     className={cx(buttonSizeStyles[size], "!p-0")}

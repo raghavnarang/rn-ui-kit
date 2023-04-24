@@ -7,6 +7,7 @@ type Product = {
   qty: number;
   id: string;
   currency?: Currency;
+  category?: ProductCategory;
 };
 
 export type { Product };
