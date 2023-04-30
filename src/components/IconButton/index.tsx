@@ -30,6 +30,6 @@ export const IconButton: FC<IconButtonProps> = ({
     left={icon}
     size={size}
     iconClassName={iconSizeStyles[size]}
-    className={cx(buttonSizeStyles[size], "!p-0")}
+    className={cx(buttonSizeStyles[size], "!p-0", buttonProps.className)}
   />
 );

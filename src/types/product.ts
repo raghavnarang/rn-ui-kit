@@ -1,6 +1,7 @@
-import { Currency } from "./currency";
+import type { Currency } from "./currency";
+import type { ProductCategory } from "./product-category";
 
-type Product = {
+type ProductType = {
   name: string;
   image: string;
   price: number;
@@ -10,4 +11,4 @@ type Product = {
   category?: ProductCategory;
 };
 
-export type { Product };
+export type { ProductType };

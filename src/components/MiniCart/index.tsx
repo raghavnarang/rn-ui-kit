@@ -1,23 +1,22 @@
 import { FC, useMemo } from "react";
-import type { Product } from "../../types/product";
+import type { ProductType } from "../../types/product";
 import { SidebarProductItem } from "../SidebarProductItem";
 import { SidebarTitleItem } from "../SidebarTitleItem";
 import { SidebarPriceItem } from "../SidebarPriceItem";
 import { SidebarItemWrapper } from "../SidebarItemWrapper";
-import { Button, ButtonType } from "../Button";
+import { Button } from "../Button";
+import type { LinkProps } from "next/link";
 
 type MiniCartProps = {
-  products?: Product[];
+  products?: (ProductType & { linkProps: LinkProps })[];
   onChange?: (id: string, qty: number) => void;
   onViewCartClick?: () => void;
-  onCheckoutClick?: () => void;
 };
 
 const MiniCart: FC<MiniCartProps> = ({
   products,
   onChange,
   onViewCartClick,
-  onCheckoutClick,
 }) => {
   const subtotal = useMemo(
     () =>
@@ -48,14 +47,7 @@ const MiniCart: FC<MiniCartProps> = ({
         price={subtotal || 0}
       />
       <SidebarItemWrapper className="justify-end">
-        <Button
-          className="mr-4"
-          type={ButtonType.Secondry}
-          onClick={onViewCartClick}
-        >
-          View Cart
-        </Button>
-        <Button onClick={onCheckoutClick}>Checkout</Button>
+        <Button onClick={onViewCartClick}>View Cart</Button>
       </SidebarItemWrapper>
     </div>
   );

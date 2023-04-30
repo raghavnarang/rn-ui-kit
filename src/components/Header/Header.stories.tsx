@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Header } from "./index";
 import { PillMenu } from "../PillMenu";
 import logo from "../../assets/logo.png";
-import image from "../../assets/product.jpg";
+import { Default as MiniCartStory } from "../MiniCart/MiniCart.stories";
+import type { MiniCartProps } from "../MiniCart";
 
 const meta: Meta<typeof Header> = {
   title: "RN UI Kit/Header",
@@ -19,8 +20,8 @@ export const Default: Story = {
       src: logo,
       width: 175,
       height: 40,
+      alt: "Nutflick",
     },
-    appName: "Nutflick",
     menu: {
       items: [
         {
@@ -42,11 +43,6 @@ export const Default: Story = {
         { text: "Contact" },
       ],
     },
-    cartProps: {
-      products: [
-        { name: "Lucky Whole Kaju - 1Kg", price: 500, image, qty: 1, id: "1" },
-        { name: "Lucky Whole Kaju - 1Kg", price: 500, image, qty: 1, id: "1" },
-      ],
-    },
+    cartProps: MiniCartStory.args as unknown as MiniCartProps,
   },
 };

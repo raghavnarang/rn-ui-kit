@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { ButtonToggler } from "./index";
-import image from "../../assets/product.jpg";
 import { ShoppingCartIcon } from "../Icon";
+
+import { Default as MiniCartStory } from "../MiniCart/MiniCart.stories";
 import { MiniCart } from "../MiniCart";
+
+import type { MiniCartProps } from "../MiniCart";
 
 const meta: Meta<typeof ButtonToggler> = {
   title: "RN UI Kit/ButtonToggler",
@@ -21,24 +24,7 @@ export const Default: Story = {
       right: 2,
     },
     children: (
-      <MiniCart
-        products={[
-          {
-            name: "Lucky Whole Kaju - 1Kg",
-            price: 500,
-            image,
-            qty: 1,
-            id: "1",
-          },
-          {
-            name: "Lucky Whole Kaju - 1Kg",
-            price: 500,
-            image,
-            qty: 1,
-            id: "1",
-          },
-        ]}
-      />
+      <MiniCart {...(MiniCartStory.args as unknown as MiniCartProps)} />
     ),
   },
 };

@@ -17,6 +17,6 @@ export const Default: Story = {
     id: "1",
     price: 500,
     image,
-    category: { name: "Cashews", id: "1" },
+    category: { name: "Cashews", id: "1" }
   },
 };

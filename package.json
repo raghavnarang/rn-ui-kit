@@ -1,14 +1,14 @@
 {
-  "name": "rn-ui-kit",
-  "private": true,
-  "version": "0.0.0",
+  "name": "rn-react-ui-kit",
+  "version": "1.0.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "local-publish": "yarn build && yalc publish"
   },
   "peerDependencies": {
     "classnames": "^2.3.2",
@@ -53,6 +53,10 @@
     ".": {
       "import": "./dist/rn-ui-kit.js",
       "require": "./dist/rn-ui-kit.umd.cjs"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   }
 }

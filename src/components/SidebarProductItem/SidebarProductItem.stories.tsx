@@ -16,6 +16,6 @@ export const Default: Story = {
     name: "Lucky Whole Kaju - 1Kg",
     price: 500,
     image,
-    qty: 1,
+    qty: 1
   },
 };

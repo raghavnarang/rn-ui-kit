@@ -14,8 +14,22 @@ type Story = StoryObj<typeof MiniCart>;
 export const Default: Story = {
   args: {
     products: [
-      { name: "Lucky Whole Kaju - 1Kg", price: 500, image, qty: 1, id: "1" },
-      { name: "Lucky Whole Kaju - 1Kg", price: 500, image, qty: 1, id: "1" },
+      {
+        name: "Lucky Whole Kaju - 1Kg",
+        price: 500,
+        image,
+        qty: 1,
+        id: "1",
+        linkProps: { href: "#" },
+      },
+      {
+        name: "Lucky Whole Kaju - 1Kg",
+        price: 500,
+        image,
+        qty: 1,
+        id: "1",
+        linkProps: { href: "#" },
+      },
     ],
   },
 };

@@ -1,13 +1,16 @@
 import Image from "next/image";
-import { FC } from "react";
+import type { FC } from "react";
+import type { LinkProps } from "next/link";
+import Link from "next/link";
 import { CurrencyPosition } from "../../types/currency";
 import { defaultCurrencyValue } from "../../types/currency";
 import { Counter } from "../Counter";
 import { SidebarItemWrapper } from "../SidebarItemWrapper";
-import { Product } from "../../types/product";
+import type { ProductType } from "../../types/product";
 
-type SidebarProductItemProps = Product & {
+type SidebarProductItemProps = ProductType & {
   onChange?: (qty: number) => void;
+  linkProps?: LinkProps;
 };
 
 const SidebarProductItem: FC<SidebarProductItemProps> = ({
@@ -16,24 +19,31 @@ const SidebarProductItem: FC<SidebarProductItemProps> = ({
   price,
   qty,
   currency = defaultCurrencyValue,
-  onChange
+  onChange,
+  linkProps,
 }) => (
   <SidebarItemWrapper hasFixedHeight={false} className="justify-between">
     <div className="flex">
       {/* Product Image */}
       <div className="w-24 h-24 mr-4 relative">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover rounded-lg"
-        />
+        <Link {...linkProps} href={linkProps?.href || '#'}>
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover rounded-lg"
+          />
+        </Link>
       </div>
       <div className="flex flex-col justify-between">
         <div>
-          <span className="text-base font-semibold text-black mb-1 block">
+          <Link
+            {...linkProps}
+            href={linkProps?.href || "#"}
+            className="text-base font-semibold text-black mb-1 block"
+          >
             {name}
-          </span>
+          </Link>
           <span className="text-base font-bold text-red-500 block">
             {currency.position === CurrencyPosition.Left && currency.label}
             {price}

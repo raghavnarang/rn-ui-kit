@@ -13,7 +13,7 @@ const PillMenu: FC<PillMenuProps> = ({ title, items }) => (
       <span className="text-xl font-bold text-black mb-5 block">{title}</span>
       <div className="w-full grid grid-cols-4 gap-5">
         {items.map((item) => (
-          <LargePill {...item} />
+          <LargePill {...item} key={item.title} />
         ))}
       </div>
     </div>

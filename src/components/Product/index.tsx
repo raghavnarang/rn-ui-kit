@@ -1,15 +1,17 @@
 import type { FC } from "react";
-import type { Product as ProductType } from "../../types/product";
+import type { ProductType } from "../../types/product";
 import Image from "next/image";
 import { Price } from "../Price";
 import { IconButton } from "../IconButton";
 import { ShoppingCartIcon, TrashIcon } from "../Icon";
 import { ButtonType } from "../Button";
+import type { LinkProps } from "next/link";
+import Link from "next/link";
 
 type ProductProps = Omit<ProductType, "qty"> & {
   addedToCart?: boolean;
   onCartClick?: () => void;
-  onClick?: () => void;
+  linkProps?: LinkProps;
 };
 
 const Product: FC<ProductProps> = ({
@@ -19,25 +21,28 @@ const Product: FC<ProductProps> = ({
   price,
   addedToCart = false,
   onCartClick,
-  onClick,
+  linkProps,
 }) => (
-  <div className="max-w-xs w-full rounded-lg bg-white drop-shadow-md">
-    <div className="h-48 w-full relative cursor-pointer" onClick={onClick}>
-      <Image
-        src={image}
-        alt={name}
-        fill
-        className="object-cover rounded-t-lg"
-      />
+  <div className="max-w-md w-full rounded-lg bg-white drop-shadow-md flex flex-col">
+    <div className="h-48 w-full relative cursor-pointer">
+      <Link {...linkProps} href={linkProps?.href || "#"}>
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover rounded-t-lg"
+        />
+      </Link>
     </div>
-    <div className="p-5">
+    <div className="p-5 flex-1 flex justify-between flex-col">
       <div className="flex flex-col">
-        <span
+        <Link
+          {...linkProps}
+          href={linkProps?.href || "#"}
           className="text-base font-bold text-gray-600 cursor-pointer"
-          onClick={onClick}
         >
           {name}
-        </span>
+        </Link>
         {category && (
           <span className="text-base font-normal text-gray-500 mt-0.5">
             {category.name}

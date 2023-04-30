@@ -8,3 +8,7 @@ export * from "./pencil";
 export * from "./trash";
 export * from "./plus-circle";
 export * from "./minus-circle";
+export * from "./chevron-double-left";
+export * from "./chevron-double-right";
+export * from "./chevron-left";
+export * from "./chevron-right";
